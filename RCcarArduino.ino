@@ -36,7 +36,7 @@ void loop(){
     Serial.print(count);
   }
   if (count < 2){   //Car doesn't move until 2 claps are detcted.
-    still();        //Other audiopeaks were often confused for a clap.
+    still();        //Other audio peaks were often confused for a clap.
   }
   else if (count == 2){
     forward();
@@ -85,8 +85,8 @@ bool analyzedata(int audiodata[]){
 //They are called depending on how many claps were detected.
 //Still is the default state in which the car doesn't move.
 //Servo.write(25) is straight. 0 and 50 are max values for the servo.
-//digitalWrite(9, LOW); digitalWrite(8, HIGH); car goes forward.
-//digitalWrite(8, LOW); digitalWrite(9, HIGH); car goes backwards.
+//digitalWrite(9, HIGH); digitalWrite(8, LOW); car goes forward.
+//digitalWrite(8, HIGH); digitalWrite(9, LOW); car goes backwards.
 
 void still(){
   digitalWrite(9, LOW);
@@ -95,14 +95,14 @@ void still(){
 }
 
 void forward(){
-  digitalWrite(9, LOW);
-  digitalWrite(8, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(8, LOW);
   servo.write(25);
 }
 
 void circle(){
-  digitalWrite(9, LOW);
-  digitalWrite(8, HIGH);
+  digitalWrite(9, HIGH);
+  digitalWrite(8, LOW);
   servo.write(0);
 }
 
